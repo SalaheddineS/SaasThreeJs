@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import * as mongoDB from "mongodb";
+import mongoClient from './Singleton/SingletonClient';
 
 class Server {
     private app:Express;
@@ -24,8 +25,8 @@ class Server {
     }
 
     private async dbConnect(){
-        if(!process.env.DB_CONN_STRING) throw new Error ("no Database link");
-        const client:mongoDB.MongoClient = new mongoDB.MongoClient(process.env.DB_CONN_STRING);
+        
+        const client:mongoDB.MongoClient = mongoClient.getInstance();
         await client.connect().then(()=>console.log('the client has successfuly been connected to the DB'));
     }
 
