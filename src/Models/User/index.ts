@@ -1,4 +1,4 @@
-import {Schema,model,connect} from 'mongoose';
+import {Schema,model} from 'mongoose';
 import IUser from '../../Types/User';
 
 const UserSchema:Schema = new Schema<IUser>({
@@ -9,7 +9,8 @@ const UserSchema:Schema = new Schema<IUser>({
     creationDate:{type:Date,required:true},
     isActive:{type:Boolean,required:true},
     isAdmin:{type:Boolean,required:true},
-    mobileNumber:{type:String,required:true}
+    mobileNumber:{type:String,required:true},
+    projects:[{type:Schema.Types.ObjectId,ref:'Project'}]
 });
 
 const UserModel = model<IUser>('User',UserSchema);
