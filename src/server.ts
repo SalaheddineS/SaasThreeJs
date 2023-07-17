@@ -10,7 +10,7 @@ class Server {
         dotenv.config();
         this.app=express();
         this.parserMiddleware();
-        this.routeConfig();
+        this.controllerConfig();
     }
 
     private parserMiddleware()
@@ -18,7 +18,7 @@ class Server {
         this.app.use(express.json());
     }
 
-    private routeConfig()
+    private controllerConfig()
     {
         this.app.use('/',(_:Request,res:Response)=>{res.send("<h1>Hello World</h1>")});
     }
