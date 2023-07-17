@@ -2,7 +2,7 @@
   "name": "saasthreejs",
   "version": "1.0.0",
   "description": "Backend NodeJs Api's for ThreeJs Saas",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/app.js",
@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "dotenv": "^16.3.1",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mongodb": "^5.7.0"
   }
 }
