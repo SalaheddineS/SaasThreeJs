@@ -3,10 +3,10 @@ import Scene from "../../Types/Scene";
 
 
 const SceneSchema:Schema = new Schema<Scene>({
-    uuid:{type:String,required:true},
+    uuid:{type:String,required:true,unique:true},
     name:{type:String,required:true},
     creationDate:{type:Date,required:true},
-    description:{type:String,required:true},
+    description:{type:String},
     _3DModels :[{type:Schema.Types.ObjectId,ref:'_3DModel'}],
     songs: [{type:Schema.Types.ObjectId,ref:'Song'}],
     images: [{type:Schema.Types.ObjectId,ref:'Image'}],
