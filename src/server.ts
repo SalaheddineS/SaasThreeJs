@@ -1,6 +1,5 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
-import * as mongoDB from "mongodb";
 import {connect} from 'mongoose';
 import Controllers from './Controllers';
 class Server {
@@ -22,6 +21,13 @@ class Server {
     private controllerConfig()
     {
         this.app.use('/image',Controllers.ImageController);
+        this.app.use('/3dmodel',Controllers._3DModelController);
+        this.app.use('/project',Controllers.ProjectController);
+        this.app.use('/scene',Controllers.SceneController);
+        this.app.use('/song',Controllers.SongController);
+        this.app.use('/text',Controllers.TextController);
+        this.app.use('/user',Controllers.UserController);
+        this.app.use('/video',Controllers.VideoController);
     }
 
     private async dbConnect(){
