@@ -1,5 +1,5 @@
 import ImageService from './ImageService';
-import _3DModel from '../Types/_3D_Model';
+import _3DModelService from './_3D_ModelService';
 import ProjectService from './ProjectService';
 import SceneService from './ScenesService';
 import SongService from './SongService';
@@ -14,5 +14,6 @@ export default {
     SongService,
     TextService,
     VideoService,
-    UserService
+    UserService,
+    _3DModelService
 }
