@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { Schema,model } from "mongoose";
 import Project from "../../Types/Project";
 
 const ProjectSchema:Schema = new Schema<Project>({
@@ -9,4 +9,6 @@ const ProjectSchema:Schema = new Schema<Project>({
     scenes:[{type:Schema.Types.ObjectId,ref:'Scene'}]
 })
 
-export default ProjectSchema;
+const ProjectModel = model<Project>("Project",ProjectSchema);
+
+export default ProjectModel;
