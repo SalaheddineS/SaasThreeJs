@@ -49,5 +49,6 @@ const addSceneToProject = async (req:Request,res:Response) => {
 export default {
     getProjects,
     addProject,
-    deleteProject
+    deleteProject,
+    addSceneToProject
 }
