@@ -6,6 +6,6 @@ const router = Router();
 router.get("/getAll",Services.ProjectService.getProjects);
 router.post("/add",Services.ProjectService.addProject);
 router.delete("/delete/:uuid",Services.ProjectService.deleteProject);
-router.put("/addSceneToProject/:uuidScene/:uuidProject",Services.ProjectService.addSceneToProject);
+router.put("/addSceneToProject/:uuidProject/:uuidScene",Services.ProjectService.addSceneToProject);
 
 export default router;
