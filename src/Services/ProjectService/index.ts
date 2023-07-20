@@ -46,9 +46,22 @@ const addSceneToProject = async (req:Request,res:Response) => {
     });
 }
 
+const deleteSceneFromProject = async (req:Request,res:Response) => {
+    const { uuidScene,uuidProject } = req.params;
+    const project = await ProjectModel.findOne({uuid:uuidProject}).populate("scenes");
+    if(!project) throw new Error("Scene or Project not found");
+    project.scenes = project.scenes.filter((scene) => scene.uuid !== uuidScene);
+    await project.save();
+    res.json({
+        message: "Scene deleted from project successfully"
+    });
+}
+
+
 export default {
     getProjects,
     addProject,
     deleteProject,
-    addSceneToProject
+    addSceneToProject,
+    deleteSceneFromProject
 }

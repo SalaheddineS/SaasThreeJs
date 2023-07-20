@@ -61,9 +61,21 @@ const addProjectToUser = async (req: Request, res: Response) => {
   });
 };
 
+const deleteProjectFromUser = async (req: Request, res: Response) => {
+    const { uuidProject, uuidUser } = req.params;
+    const user = await UserModel.findOne({ uuid: uuidUser }).populate("projects");
+    if (!user) throw new Error("Project or User not found");
+    user.projects = user.projects.filter((project) => project.uuid !== uuidProject);
+    await user.save();
+    res.json({
+        message: "Project deleted from user successfully",
+    });
+};
+
 export default {
   getUsers,
   addUser,
   deleteUser,
   addProjectToUser,
+  deleteProjectFromUser
 };
