@@ -1,18 +1,16 @@
 import express, { Express, Request, Response } from 'express';
-import dotenv from 'dotenv';
 import {connect} from 'mongoose';
 import Controllers from './Controllers';
-import passport from 'passport';
-import pass from './Configuration/JwtPassportJs';
+import passport from './Configuration/JwtPassportJs';
+
 class Server {
     private app:Express;
 
     constructor()
     {
-        dotenv.config();
+
         this.app=express();
         this.parserMiddleware();
-        this.passportConfig();
         this.controllerConfig();
     }
 
@@ -21,14 +19,10 @@ class Server {
         this.app.use(express.json());
     }
 
-    private passportConfig()
-    {
-        this.app.use(passport.initialize());
-    }
-
+   
     private controllerConfig()
     {
-        this.app.use('/image',pass.authenticate('jwt',{session:false}),Controllers.ImageController);
+        this.app.use('/image',passport.authenticate('jwt',{session:false}),Controllers.ImageController);
         this.app.use('/3dmodel',Controllers._3DModelController); 
         this.app.use('/project',Controllers.ProjectController);
         this.app.use('/scene',Controllers.SceneController);
