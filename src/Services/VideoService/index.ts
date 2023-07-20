@@ -57,6 +57,7 @@ const deleteVideo = async (req:Request,res:Response) => {
     if(!video) throw new Error("Video not found"); 
     const url = video.url;
     deleteVideos(url);
+    await video.deleteOne();
     res.json({ 
         message: "Video deleted successfully"
     });
