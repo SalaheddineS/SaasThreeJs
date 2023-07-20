@@ -6,7 +6,7 @@ import SongService from './SongService';
 import TextService from './TextService';
 import VideoService from './VideoService';
 import UserService from './UserService';
-
+import AuthenticationService from './AuthenticationService';
 export default {
     ImageService,
     ProjectService,
@@ -15,5 +15,6 @@ export default {
     TextService,
     VideoService,
     UserService,
-    _3DModelService
+    _3DModelService,
+    AuthenticationService
 }

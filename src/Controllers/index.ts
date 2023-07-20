@@ -6,7 +6,7 @@ import SongController from './SongController';
 import TextController from './TextController';
 import UserController from './UserController';
 import VideoController from './VideoController';
-
+import AuthenticationController from './AuthenticationController';
 export default {
     ImageController,
     _3DModelController,
@@ -15,5 +15,6 @@ export default {
     SongController,
     TextController,
     UserController,
-    VideoController
+    VideoController,
+    AuthenticationController
 }
