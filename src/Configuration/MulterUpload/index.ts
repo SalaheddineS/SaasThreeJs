@@ -9,7 +9,7 @@ const imageStorage = multer.diskStorage({
     filename: (req, file, cb) => {
         const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1E9);
         const originalExtension = path.extname(file.originalname);
-        cb(null, file.fieldname + "-" + uniqueSuffix + originalExtension);
+        cb(null, 'image' + "-" + uniqueSuffix + originalExtension);
     }
 });
 
@@ -25,7 +25,7 @@ const fileStorage = multer.diskStorage({
     filename: (req, file, cb) => {
         const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1E9);
         const originalExtension = path.extname(file.originalname);
-        cb(null, file.fieldname + "-" + uniqueSuffix + originalExtension);
+        cb(null, 'file' + "-" + uniqueSuffix + originalExtension);
     }
 });
 
@@ -38,6 +38,11 @@ export const uploadFile = multer({
 const videoStorage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, path.join(__dirname, "../../../public/videos"));
+    },
+    filename: (req, file, cb) => {
+        const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1E9);
+        const originalExtension = path.extname(file.originalname);
+        cb(null, 'video' + "-" + uniqueSuffix + originalExtension);
     }
 });
 
@@ -49,6 +54,11 @@ export const uploadVideo = multer({
 const audioStorage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, path.join(__dirname, "../../../public/audios"));
+    },
+    filename: (req, file, cb) => {
+        const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1E9);
+        const originalExtension = path.extname(file.originalname);
+        cb(null, 'audio' + "-" + uniqueSuffix + originalExtension);
     }
 });
 
@@ -56,16 +66,6 @@ export const uploadAudio = multer({
     storage: audioStorage
 });
 
-// Multer configuration for _3D models
-const modelStorage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, "../../../public/models"));
-    }
-});
-
-export const uploadModel = multer({
-    storage: modelStorage
-});
 
 
 

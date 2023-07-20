@@ -51,7 +51,6 @@ const addImage = async (req:Request,res:Response) => {
 const deleteImage = async (req:Request,res:Response) => {
     const { uuid } = req.params;
     const image = await ImageModel.findOne({uuid: uuid});
-    console.log(image?.url);
     if(!image) throw new Error("Image not found");
     const url = image.url; 
     deleteImages(url);
