@@ -2,6 +2,15 @@ import { Request,Response } from "express";
 import GenerateUUID from "../../Utilities/GenerateUUID";
 import TextModel from "../../Models/Text";
 
+export const getText = async (req:Request,res:Response) => {
+    const { uuid } = req.params;
+    const text = await TextModel.findOne({uuid: uuid});
+    if(!text) throw new Error("Text not found");
+    res.json({
+        text
+    });
+}
+
 export const getTexts = async (req:Request,res:Response) => {
     const texts = await TextModel.find();
     res.json({
@@ -37,5 +46,6 @@ const deleteText = async (req:Request,res:Response) => {
 export default {
     getTexts,
     addText,
-    deleteText
+    deleteText,
+    getText
 }

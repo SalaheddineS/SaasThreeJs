@@ -3,9 +3,9 @@ import { Router } from "express";
 
 const router = Router();
 
-router.get("/getAll",Services.UserService.getUsers);
-router.post("/add",Services.UserService.addUser);
-router.delete("/delete/:uuid",Services.UserService.deleteUser);
-router.put("addProjectToUser/:uuidUser/:uuidProject",Services.UserService.addProjectToUser);
+router.get("/getAll",Services.TextService.getTexts);
+router.get("/get/:uuid",Services.TextService.getText);
+router.post("/add",Services.TextService.addText);
+router.delete("/delete/:uuid",Services.TextService.deleteText);
 
 export default router; 
