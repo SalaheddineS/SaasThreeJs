@@ -9,7 +9,7 @@ const UserSchema:Schema = new Schema<IUser>({
     creationDate:{type:Date,required:true},
     isActive:{type:Boolean,required:true},
     isAdmin:{type:Boolean,required:true},
-    mobileNumber:{type:String,required:true},
+    mobileNumber:{type:String},
     projects:[{type:Schema.Types.ObjectId,ref:'Project'}]
 });
 

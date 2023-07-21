@@ -4,6 +4,16 @@ import UserModel from "../../Models/User";
 import ProjectModel from "../../Models/Project";
 import hashPassword from "../../Utilities/HashPassword";
 
+export const getUser = async (req: Request, res: Response) => {
+  const { uuid } = req.params;
+  if(!uuid) throw new Error("UUID is required");
+  const user = await UserModel.findOne({ uuid })
+  if(!user) throw new Error("User not found");
+  res.json({
+    user
+  });
+};
+
 export const getUsers = async (req: Request, res: Response) => {
   const users = await UserModel.find().populate({
     path: "projects",
